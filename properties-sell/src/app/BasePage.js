@@ -1,11 +1,11 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-import { Home } from "./pages";
+import { ItemListContainer } from "./pages";
 
 export default function BasePage() {
-  return ( 
+  return (
     <Switch>
-      <Route path="/" component={Home} />
+      <Route path="/" component={ItemListContainer} />
     </Switch>
   );
-}
+};
