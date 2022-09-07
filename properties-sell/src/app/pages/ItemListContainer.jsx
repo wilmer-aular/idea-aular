@@ -11,3 +11,5 @@ export const ItemListContainer = () => {
         </>
     )
 }
+
+export default ItemListContainer;
