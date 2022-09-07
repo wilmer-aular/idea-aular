@@ -58,7 +58,12 @@
 
 }
 
-
+.estimateNew .bulletPoints {
+  list-style: disc;
+  margin: 10px;
+  line-height: 30px;
+  ;
+}
 
 .estimateNew .innerBorder {
   border: solid 1px #ffffff;
@@ -110,4 +115,30 @@
 .estimateNew .wrapper:hover .hover.title {
   background-size: cover !important;
   transition: opacity 2s;
+}
+
+.estimateNew features-10 h4 {
+  margin-bottom: 26.66666667px;
+}
+
+@media all and (max-width: 990px) {
+  .features-10 div[class*='col-'] {
+    width: 100% !important;
+  }
+
+  .features-10 .local-video-container,
+  .estimateNew .features-10 video {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .features-10 .local-video-container {
+    margin-bottom: 40px;
+  }
+}
+
+@media all and (max-width: 767px) {
+  .features-10 .local-video-container {
+    margin-bottom: 20px;
+  }
 }

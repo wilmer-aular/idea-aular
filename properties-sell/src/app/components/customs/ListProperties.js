@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { getListWithImage } from "@src/utils/util"
 
 const ListProperties = ({ list }) => {
@@ -35,18 +36,19 @@ const ListProperties = ({ list }) => {
                                                 <div className="text">
                                                     <div className="innerBorder" style={{ paddingTop: "18%" }}>
                                                         <div className="modal-video-container">
-                                                            <span onClick={() => { }} style={{ color: 'white', fontSize: '30px', cursor: "pointer" }}>SEE DETAIL</span>
+                                                            <Link to={`/detail/${index}/${i.indexImg}`} style={{ color: 'white', fontSize: '30px', cursor: "pointer" }}>
+                                                                SEE DETAIL
+                                                            </Link>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </>
                                         </div>
-                                        <div onClick={() => { }}>
+                                        <div >
                                             <h5 style={{ fontSize: 'inherit', cursor: "pointer" }}><strong>{i.type}</strong> in {i.country}.</h5>
                                             <h5 style={{ fontSize: '14px', cursor: "pointer" }}>{i.city}.</h5>
                                             <span style={{ fontSize: 'inherit', cursor: "pointer" }}>$ {i.price}.</span>
                                         </div>
-
                                     </div>
                                 )) : (
                                     <div className="col-sm-12 text-center feature ">
