@@ -1,13 +1,26 @@
-import { ItemCount } from '@src/app/components/customs/ItemCount';
-
+import { ListProperties } from '@src/app/components/customs';
+import { list } from "@src/utils/data"
+import { custonFetch } from "@src/services/custonFetch"
+import { useCallback, useEffect, useState } from 'react';
 export const ItemListContainer = () => {
 
-    const onAdd = (qty) => {
-        alert(`You hace selected ${qty} items`)
-    }
+    const [data, setData] = useState([]);
+
+    const promise = useCallback(async (data) => {
+        const newData = await custonFetch(3000, list);
+        setData(newData)
+    }, [setData])
+
+    useEffect(() => {
+        promise(data)
+    }, [promise, data])
+
     return (
         <>
-            <ItemCount stock={5} initial={1} onAdd={onAdd} />
+            <div className="estimateNew">
+                <ListProperties list={data} />
+            </div>
+
         </>
     )
 }

@@ -1,13 +1,113 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.estimateNew .features-2,
+.estimateNew .features-3 {
+  padding: 40px 0 40px 0;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.estimateNew .features-2 h4 {
+  margin-bottom: 13.33333333px;
+}
+
+.estimateNew .features-2 .row:first-of-type,
+.estimateNew .features-3 .row:first-of-type {
+  margin-bottom: 80px;
+}
+
+.estimateNew .features-2 img {
+  display: inline-block;
+  margin-bottom: 26.66666667px;
+}
+
+.estimateNew .features-2 .feature,
+.estimateNew .features-3 .feature {
+  margin-bottom: 40px;
+}
+
+@media all and (max-width: 767px) {
+  .estimateNew .features-2 {
+    padding: 40px 0 20px 0;
+  }
+
+  .estimateNew .features-2 .row:first-of-type,
+  .estimateNew .estimateNew .features-3 .row:first-of-type {
+    margin-bottom: 40px;
+  }
+
+  .estimateNew .features-2 img {
+    margin-bottom: 13.33333333px;
+  }
+}
+
+/*FRONTPAGE CUBES CODE*/
+.estimateNew .wrapper {
+  overflow: hidden;
+  position: relative;
+}
+
+.estimateNew .wrapper .text {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background: rgba(42, 98, 106, 0.61);
+  visibility: hidden;
+  padding: 20px;
+  opacity: 0;
+  transition: opacity 1.5s;
+  transition-timing-function: ease;
+
+}
+
+
+
+.estimateNew .innerBorder {
+  border: solid 1px #ffffff;
+  height: 100%;
+  padding-top: 40%;
+}
+
+.estimateNew .wrapper .textHover {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  height: 20%;
+  background: rgba(42, 98, 106, 0.61);
+  overflow: hidden;
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 2s;
+  transition-timing-function: ease;
+}
+
+.estimateNew .wrapper:hover .text {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 1s;
+  transition-timing-function: ease;
+
+}
+
+.estimateNew .wrapper:hover div.hover {
+  transition: 2.3s;
+}
+
+.estimateNew div .hover {
+  transition: 1.5s;
+}
+
+.estimateNew .wrapper:hover .textHover {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.estimateNew .wrapper:hover .hover {
+  background-size: 120% !important;
+  transition: opacity 2s;
+}
+
+.estimateNew .wrapper:hover .hover.title {
+  background-size: cover !important;
+  transition: opacity 2s;
 }
