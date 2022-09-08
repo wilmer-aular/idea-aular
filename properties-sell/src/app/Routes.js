@@ -6,18 +6,20 @@
  */
 
 import React from "react";
-import { Switch } from "react-router-dom";
+import { Switch, BrowserRouter } from "react-router-dom";
 import { Layout } from "./layout/Layout";
 import BasePage from "./BasePage";
 
 export function Routes() {
   return (
     <>
-          <Switch>
-            <Layout>
-              <BasePage />
-            </Layout>
-          </Switch>
+      <BrowserRouter>
+        <Switch>
+          <Layout>
+            <BasePage />
+          </Layout>
+        </Switch>
+      </BrowserRouter>
     </>
   );
 }

@@ -12,15 +12,15 @@ export const menu = [
         categories: [
             {
                 title: 'Apartments',
-                id: 3,
+                id: 2,
             },
             {
                 title: 'Office',
-                id: 4
+                id: 3
             },
             {
                 title: 'House',
-                id: 5
+                id: 1
             },
         ]
     },

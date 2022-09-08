@@ -6,9 +6,9 @@ export default function BasePage() {
   return (
     <Switch>
       <Route exact path="/" component={ItemListContainer} />
-      <Route exact path="/detail/:id/:indexImg" component={ItemDetailContainer} />
-      {/* <Route exact path="/category/:id" component={ItemListContainer} />
-      <Route  path="*" component={Error} />  */}
+      <Route exact path="/detail/:id" component={ItemDetailContainer} />
+      <Route exact path="/category/:id" component={ItemListContainer} />
+      {/* <Route  path="*" component={Error} />  */}
     </Switch>
   );
 };

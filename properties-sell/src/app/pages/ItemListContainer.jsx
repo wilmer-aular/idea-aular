@@ -3,22 +3,36 @@ import LoadingLottie from '@src/app/components/commons/loading/LoadingLottie';
 import { list } from "@src/utils/data"
 import { custonFetch } from "@src/services/custonFetch"
 import { useCallback, useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
+const getType = (id) => {
+    return {
+        1: "House",
+        2: "Apartments",
+        3: "Office"
+    }[id];
+}
 
-export const ItemListContainer = () => {
+export const ItemListContainer = (props) => {
+    const { id } = useParams();
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState([]);
 
-    const promise = useCallback(async (data) => {
+    const promise = useCallback(async (id) => {
+        let newList = list;
+
+        if (id) newList = list.filter(i => i.type === getType(id))
+
         setLoading(true);
-        const newData = await custonFetch(3000, list);
+        const newData = await custonFetch(2000, newList);
         setLoading(false);
         setData(newData)
-    }, [setData])
+    }, [setData]);
+
 
     useEffect(() => {
-        promise(data)
-    }, [promise, data])
+        promise(id)
+    }, [promise, id])
 
     return (
         <>

@@ -12,7 +12,7 @@ const Item = ({ index, property }) => {
                         <div className="text">
                             <div className="innerBorder" style={{ paddingTop: "18%" }}>
                                 <div className="modal-video-container">
-                                    <Link to={`/detail/${index}/${property.indexImg}`} style={{ color: 'white', fontSize: '30px', cursor: "pointer" }}>
+                                    <Link to={`/detail/${index}`} style={{ color: 'white', fontSize: '30px', cursor: "pointer" }}>
                                         SEE DETAIL
                                     </Link>
                                 </div>

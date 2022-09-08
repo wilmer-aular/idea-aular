@@ -1,17 +1,7 @@
-import { useEffect, useState } from "react";
-import { getListWithImage } from "@src/utils/util"
 import Item from "./Item"
 
 const ListItems = ({ list }) => {
-    const [entities, setEntities] = useState([])
 
-    useEffect(() => {
-        if (list.length) {
-            setEntities(getListWithImage(list));
-        } else {
-            setEntities([]);
-        }
-    }, [list, setEntities])
     return (
         <>
             <section id="properties" className="features features-2" >
@@ -26,8 +16,8 @@ const ListItems = ({ list }) => {
                     </div>
                     <div className="row">
                         {
-                            entities.length ?
-                                entities?.map((i, index) => (
+                            list.length ?
+                                list?.map((i, index) => (
                                     <Item key={index} index={index} property={i} />
                                 )) : (
                                     <div className="col-sm-12 text-center feature ">
