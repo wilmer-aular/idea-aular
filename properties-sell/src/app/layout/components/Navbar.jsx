@@ -1,5 +1,6 @@
 import { menu } from './menu';
 import Landing from './Landing'
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     return (<>
@@ -16,7 +17,7 @@ const Navbar = () => {
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         {
                             menu.map((i, index) => (
-                                i.title !== 'Services' ? (
+                                i.title !== 'Categories' ? (
                                     <li key={index} className="nav-item">
                                         <a className="nav-link active" aria-current="page" href={i.href}>{i.title}</a>
                                     </li>
@@ -28,8 +29,8 @@ const Navbar = () => {
                                             </a>
                                             <ul className="dropdown-menu">
                                                 {
-                                                    i.services.map(i => (
-                                                        <li key={i.id}><a className="dropdown-item" href={i.href}>{i.title}</a></li>
+                                                    i.categories?.map(i => (
+                                                        <li key={i.id}><Link className="dropdown-item" to={`/category/${i.id}`}>{i.title}</Link></li>
                                                     ))
                                                 }
                                             </ul>

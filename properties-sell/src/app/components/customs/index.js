@@ -1,4 +1,5 @@
-import ListProperties from "./ListProperties";
-import DetailProperty from "./DetailProperty";
+import ListItems from "./ListItems";
+import DetailItem from "./DetailItem";
+import Item from "./Item";
 
-export { ListProperties, DetailProperty };
+export { ListItems, DetailItem, Item };

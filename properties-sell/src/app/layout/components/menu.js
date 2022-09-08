@@ -1,29 +1,26 @@
 export const menu = [
     {
         title: 'Home',
-        href:'#home'
+        href: '/#home'
     },
     {
         title: 'Testimonials',
-        href:'#testimonials'
+        href: '/#testimonials'
     },
     {
-        title: 'Services',
-        services : [
+        title: 'Categories',
+        categories: [
             {
-                title: 'Our services',
-                href:'#ourServices',
-                id:3,
+                title: 'Apartments',
+                id: 3,
             },
             {
-                title: 'Sell',
-                href:'#sell',
-                id:4
+                title: 'Office',
+                id: 4
             },
             {
-                title: 'Real estate',
-                href:'#realSstate',
-                id:5
+                title: 'House',
+                id: 5
             },
         ]
     },

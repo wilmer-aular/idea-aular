@@ -6,6 +6,7 @@
     "@src/app": "file:src/app",
     "@src/services": "file:src/services",
     "@src/utils": "file:src/utils",
+    "react-lottie": "^1.2.3",
     "@popperjs/core": "^2.11.6",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.3.0",

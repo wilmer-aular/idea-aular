@@ -1,6 +1,6 @@
 
 
-const DetailProperty = ({ property }) => {
+const DetailItem = ({ property }) => {
     return (
         <>
             <section id="property" className="features features-2" >
@@ -37,4 +37,4 @@ const DetailProperty = ({ property }) => {
     );
 };
 
-export default DetailProperty;
+export default DetailItem;
