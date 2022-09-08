@@ -1,8 +1,8 @@
-const getUrlImage = (type, id) => `media/images/${type}/${id}.jpg`
+
 export const list = [
     {
         "type": "House",
-        imgUrl: getUrlImage("House", 0),
+        imgUrl: "/media/images/House/0.jpg",
         "address": "8860 Micah Shoals",
         "city": "Ciudad de Cordoba",
         "country": "Argentina",
@@ -12,7 +12,7 @@ export const list = [
     },
     {
         "type": "Apartments",
-        imgUrl: getUrlImage("Apartments", 0),
+        imgUrl: "/media/images/Apartments/0.jpg",
         "address": "23047 Orn Ford",
         "city": "San Juan",
         "country": "Puerto Rico",
@@ -22,7 +22,7 @@ export const list = [
     },
     {
         "type": "Apartments",
-        imgUrl: getUrlImage("Apartments", 1),
+        imgUrl: "/media/images/Apartments/1.jpg",
         "address": "6566 Halvorson Knolls",
         "city": "Santo Domingo Este",
         "country": "República Dominicana",
@@ -32,7 +32,7 @@ export const list = [
     },
     {
         "type": "House",
-        imgUrl: getUrlImage("House", 1),
+        imgUrl: "/media/images/House/1.jpg",
         "address": "6220 Hazel Spring",
         "city": "Colón",
         "country": "Panamá",
@@ -43,7 +43,7 @@ export const list = [
     {
 
         "type": "Office",
-        imgUrl: getUrlImage("Office", 0),
+        imgUrl: "/media/images/Office/0.jpg",
         "address": "1921 Chelsea Shoals",
         "city": "Mar de Plata",
         "country": "Chile",
@@ -53,7 +53,7 @@ export const list = [
     },
     {
         "type": "Office",
-        imgUrl: getUrlImage("Office", 1),
+        imgUrl: "/media/images/Office/1.jpg",
         "address": "915 Colleen Freeway",
         "city": "Caracas",
         "country": "Venezuela",
