@@ -3,13 +3,21 @@ import Landing from './Landing'
 import { Link } from 'react-router-dom';
 
 const Navbar = () => {
+
+    const getPreviousUrl = () => {
+        window.history.back();
+    };
     return (<>
         <nav className="navbar navbar-expand-lg bg-light">
             <div className="container-fluid">
-                <a className="navbar-brand" href="/#">
+                <i className="fa fa-arrow-left"
+                    style={{ color: '#adb5bd', marginRight: '10px', fontSize: '24px', cursor: 'pointer' }}
+                    onClick={() => getPreviousUrl()}
+                />
+                <Link className="navbar-brand" to="/">
                     <img src="/logo.jpeg" alt="" width="50" height="44" />
                     Poperties Sell
-                </a>
+                </Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
@@ -44,10 +52,8 @@ const Navbar = () => {
                         <button className="btn btn-outline-success" type="submit">Search</button>
                     </form>
                 </div>
-
-
+                <Landing />
             </div>
-            <Landing />
         </nav>
     </>)
 

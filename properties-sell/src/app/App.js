@@ -1,12 +1,21 @@
-import React from 'react';
-import { BrowserRouter } from "react-router-dom";
-import { Routes } from "./Routes";
+import { Routes, Route } from "react-router-dom";
+import { Layout } from "./layout/Layout";
+import { ItemListContainer, ItemDetailContainer, Error } from "./pages";
+
 
 function App() {
+
   return (
-    <BrowserRouter>
-      <Routes />
-    </BrowserRouter>
+    <>
+      <Layout>
+        <Routes>
+          <Route path="" element={<ItemListContainer />} />
+          <Route path="/detail/:id" element={<ItemDetailContainer />} />
+          <Route path="/category/:id" element={<ItemListContainer />} />
+          <Route path="*" element={<Error />} />
+        </Routes>
+      </Layout>
+    </>
   );
 }
 

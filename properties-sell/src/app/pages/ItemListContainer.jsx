@@ -38,7 +38,7 @@ export const ItemListContainer = (props) => {
         <>
             {
                 loading ? <LoadingLottie loading={loading} /> :
-                    <div className="estimateNew">
+                    <div id='home' className="estimateNew">
                         <ListItems list={data} />
                     </div>
             }
