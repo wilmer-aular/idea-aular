@@ -4,10 +4,6 @@ export const menu = [
         href: '/#home'
     },
     {
-        title: 'Testimonials',
-        href: '/#testimonials'
-    },
-    {
         title: 'Categories',
         categories: [
             {

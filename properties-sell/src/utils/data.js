@@ -8,7 +8,8 @@ export const list = [
         "country": "Argentina",
         "price": 120000,
         "numberOfRooms": 5,
-        "numberOfBathrooms": 3
+        "numberOfBathrooms": 3,
+        stock: 10
     },
     {
         "type": "Apartments",
@@ -18,7 +19,8 @@ export const list = [
         "country": "Puerto Rico",
         "price": 110000,
         "numberOfRooms": 4,
-        "numberOfBathrooms": 2
+        "numberOfBathrooms": 2,
+        stock: 10
     },
     {
         "type": "Apartments",
@@ -28,7 +30,8 @@ export const list = [
         "country": "República Dominicana",
         "price": 85000,
         "numberOfRooms": 3,
-        "numberOfBathrooms": 2
+        "numberOfBathrooms": 2,
+        stock: 10
     },
     {
         "type": "House",
@@ -38,7 +41,8 @@ export const list = [
         "country": "Panamá",
         "price": 45000,
         "numberOfRooms": 4,
-        "numberOfBathrooms": 2
+        "numberOfBathrooms": 2,
+        stock: 10
     },
     {
 
@@ -49,7 +53,8 @@ export const list = [
         "country": "Chile",
         "price": 37000,
         "numberOfRooms": 2,
-        "numberOfBathrooms": 1
+        "numberOfBathrooms": 1,
+        stock: 10
     },
     {
         "type": "Office",
@@ -59,6 +64,7 @@ export const list = [
         "country": "Venezuela",
         "price": 30000,
         "numberOfRooms": 2,
-        "numberOfBathrooms": 1
+        "numberOfBathrooms": 1,
+        stock: 10
     },
 ]

@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import { Layout } from "./layout/Layout";
-import { ItemListContainer, ItemDetailContainer, Error } from "./pages";
+import { ItemListContainer, ItemDetailContainer, Error, Cart } from "./pages";
 
 
 function App() {
@@ -12,6 +12,7 @@ function App() {
           <Route path="" element={<ItemListContainer />} />
           <Route path="/detail/:id" element={<ItemDetailContainer />} />
           <Route path="/category/:id" element={<ItemListContainer />} />
+          <Route path="/cart" element={<Cart />} />
           <Route path="*" element={<Error />} />
         </Routes>
       </Layout>

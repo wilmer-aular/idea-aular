@@ -8,6 +8,7 @@ import { useParams } from 'react-router-dom';
 export const ItemDetailContainer = () => {
     const { id } = useParams();
     const [data, setData] = useState({});
+    const [qty, setQty] = useState(0);
     const [loading, setLoading] = useState(false);
 
     const promise = useCallback(async (index) => {
@@ -16,6 +17,11 @@ export const ItemDetailContainer = () => {
         setLoading(false);
         setData(newData)
     }, [setData])
+
+    const onAdd = (qty) => {
+        alert(`You have selected ${qty} items`)
+        setQty(qty);
+    }
 
     useEffect(() => {
         promise(id)
@@ -26,7 +32,7 @@ export const ItemDetailContainer = () => {
             {
                 loading ? <LoadingLottie loading={loading} /> :
                     <div className="estimateNew">
-                        <DetailItem property={data} />
+                        <DetailItem property={data} onAdd={onAdd} qty={qty} />
                     </div>
             }
         </>
