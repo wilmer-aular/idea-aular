@@ -4,8 +4,10 @@ import { list } from "@src/utils/data"
 import { custonFetch } from "@src/services/custonFetch"
 import { useCallback, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { useCartContent } from "../../context/CartContext";
 
 export const ItemDetailContainer = () => {
+    const { addItem } = useCartContent();
     const { id } = useParams();
     const [data, setData] = useState({});
     const [qty, setQty] = useState(0);
@@ -18,9 +20,11 @@ export const ItemDetailContainer = () => {
         setData(newData)
     }, [setData])
 
-    const onAdd = (qty) => {
-        alert(`You have selected ${qty} items`)
-        setQty(qty);
+
+    const onAdd = (product, qty) => {
+        alert(`You have selected ${qty} ${product.type}`)
+        setQty(product.qty);
+        addItem(product, qty)
     }
 
     useEffect(() => {

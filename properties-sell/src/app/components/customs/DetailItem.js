@@ -36,7 +36,7 @@ const DetailItem = ({ property, onAdd, qty }) => {
                     </div>
                 </div>
                 {qty === 0 ?
-                    <ItemCount stock={property.stock} initial={0} onAdd={onAdd} /> :
+                    <ItemCount product={property} initial={0} onAdd={onAdd} /> :
                     <div style={{ display: 'flex', justifyContent: 'center' }}>
                         <Link className='btn btn-danger' to='/cart'>CHECKOUT</Link>
                     </div>

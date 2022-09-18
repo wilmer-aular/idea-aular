@@ -1,9 +1,9 @@
-import { menu } from './menu';
+import { categories } from './menu';
 import Landing from './Landing'
 import { Link } from 'react-router-dom';
-
+import { useLocation } from 'react-router-dom';
 const Navbar = () => {
-
+    const { pathname } = useLocation();
     const getPreviousUrl = () => {
         window.history.back();
     };
@@ -23,29 +23,27 @@ const Navbar = () => {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+
+                        <li key='home' className="nav-item">
+                            <Link className="nav-link active" aria-current="page" to='/#home'>Home</Link>
+                        </li>
+
                         {
-                            menu.map((i, index) => (
-                                i.title !== 'Categories' ? (
-                                    <li key={index} className="nav-item">
-                                        <a className="nav-link active" aria-current="page" href={i.href}>{i.title}</a>
-                                    </li>
-                                ) :
-                                    (
-                                        <li key={index} className="nav-item dropdown">
-                                            <a className="nav-link dropdown-toggle" href={i.href} role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                {i.title}
-                                            </a>
-                                            <ul className="dropdown-menu">
-                                                {
-                                                    i.categories?.map(i => (
-                                                        <li key={i.id}><Link className="dropdown-item" to={`/category/${i.id}`}>{i.title}</Link></li>
-                                                    ))
-                                                }
-                                            </ul>
-                                        </li>
-                                    )
-                            ))
+                            pathname === '/' &&
+                            <li key="categories" className="nav-item dropdown">
+                                <span className="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Categories
+                                </span>
+                                <ul className="dropdown-menu">
+                                    {
+                                        categories.map(i => (
+                                            <li key={i.id}><Link className="dropdown-item" to={`/category/${i.id}`}>{i.title}</Link></li>
+                                        ))
+                                    }
+                                </ul>
+                            </li>
                         }
+
                     </ul>
                     <form className="d-flex" role="search">
                         <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />

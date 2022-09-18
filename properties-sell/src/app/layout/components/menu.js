@@ -1,23 +1,14 @@
-export const menu = [
+export const categories = [
     {
-        title: 'Home',
-        href: '/#home'
+        title: 'Apartments',
+        id: 2,
     },
     {
-        title: 'Categories',
-        categories: [
-            {
-                title: 'Apartments',
-                id: 2,
-            },
-            {
-                title: 'Office',
-                id: 3
-            },
-            {
-                title: 'House',
-                id: 1
-            },
-        ]
+        title: 'Office',
+        id: 3
+    },
+    {
+        title: 'House',
+        id: 1
     },
 ]
