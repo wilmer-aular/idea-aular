@@ -18,7 +18,7 @@ const ListItems = ({ list }) => {
                         {
                             list.length ?
                                 list?.map((i, index) => (
-                                    <Item key={index} index={index} property={i} />
+                                    <Item key={index} property={i} />
                                 )) : (
                                     <div className="col-sm-12 text-center feature ">
                                         <h4 style={{ color: "#898585" }}>No data to display</h4>

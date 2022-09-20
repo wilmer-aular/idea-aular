@@ -13,9 +13,9 @@ export const ItemDetailContainer = () => {
     const [qty, setQty] = useState(0);
     const [loading, setLoading] = useState(false);
 
-    const promise = useCallback(async (index) => {
+    const promise = useCallback(async (id) => {
         setLoading(true);
-        const newData = await custonFetch(2000, list[index]);
+        const newData = await custonFetch(500, list.find(i => i.id === Number(id)));
         setLoading(false);
         setData(newData)
     }, [setData])

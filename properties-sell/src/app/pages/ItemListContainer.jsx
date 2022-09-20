@@ -24,7 +24,7 @@ export const ItemListContainer = (props) => {
         if (id) newList = list.filter(i => i.type === getType(id))
 
         setLoading(true);
-        const newData = await custonFetch(2000, newList);
+        const newData = await custonFetch(500, newList);
         setLoading(false);
         setData(newData)
     }, [setData]);

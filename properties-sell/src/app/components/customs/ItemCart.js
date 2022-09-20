@@ -1,31 +1,39 @@
 import { Button } from "../commons/Button";
+import { Link } from 'react-router-dom';
 
 const ItemCart = ({ product, remove }) => {
+
     return (
         <>
-            <div className="container">
-                <div className="row v-align-children" style={{ marginTop: '50px' }}>
-                    <div className="col-md-3">
-                        <div className="wrapper">
-                            <div className="hover" style={{ backgroundImage: `url(${product?.imgUrl})`, paddingTop: "55%", backgroundPosition: "top center", backgroundSize: "100%", maxHeight: "100%" }}>
-                            </div>
+            <div className="row v-align-children mt-4">
+                <div className="col-md-4">
+                    <div className="wrapper">
+                        <div className="hover" style={{ backgroundImage: `url(${product?.imgUrl})`, paddingTop: "55%", backgroundPosition: "top center", backgroundSize: "100%", maxHeight: "100%" }}>
                         </div>
                     </div>
-                    <div className="col-md-5">
+                </div>
+                <div className="col-md-4">
+                    <div>
                         <ul className="bulletPoints">
-                            <li className="mt-2"><strong>Price:</strong> $ {product?.price}</li>
-                            <li className="mt-2"><strong>Address:</strong> {product?.country} / {product?.city} / {product?.address}</li>
-                            <li className="mt-2"><strong>Number of rooms:</strong> {product?.numberOfRooms}</li>
-                            <li className="mt-2"><strong>Number of bathrooms:</strong> {product?.numberOfBathrooms}</li>
-                            <li className="mt-2"><strong>Quantity:</strong> {product?.qty}</li>
+                            <li className="mt-2"><strong>property:</strong> {product?.type}</li>
+                            <li className="mt-2"><strong>Country:</strong> {product?.country}</li>
+                            <li className="mt-2"><strong>City:</strong> {product?.city}</li>
                         </ul>
                     </div>
-                    <div className="col-md-4" style={{ textAlign: "end" }}>
-                        <Button variant="danger" style={{ marginTop: 136 }} textButton="remove from cart" click={() => remove(product.id)} />
+                    <div style={{ margin: "30px 30px 30px 30px" }}>
+                        <Link to={`/detail/${product.id}`} className="btn btn-success" style={{ marginRight: 10 }}> DETAIL </Link>
+                        <Button variant="danger" textButton="DELETE" click={() => remove(product)} />
+                    </div>
+                </div>
+                <div className="col-md-3 text-center">
+                    <div className="mt-4">
+                        <span style={{ fontSize: 20 }}>{product?.qty} <strong>Item(s)</strong> / <strong>$</strong> {product?.price}</span>
+                    </div>
+                    <div className="mt-4">
+                        <span style={{ fontSize: 30 }} >$ {product?.total}</span>
                     </div>
                 </div>
             </div>
-
         </>
     );
 };
