@@ -36,7 +36,7 @@ export const ItemDetailContainer = () => {
             {
                 loading ? <LoadingLottie loading={loading} /> :
                     <div className="estimateNew">
-                        <DetailItem property={data} onAdd={onAdd} qty={qty} />
+                        <DetailItem item={data} onAdd={onAdd} qty={qty} />
                     </div>
             }
         </>

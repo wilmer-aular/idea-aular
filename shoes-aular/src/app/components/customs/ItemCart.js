@@ -15,7 +15,7 @@ const ItemCart = ({ product, remove }) => {
                 <div className="col-md-4">
                     <div>
                         <ul className="bulletPoints">
-                            <li className="mt-2"><strong>property:</strong> {product?.type}</li>
+                            <li className="mt-2"><strong>type:</strong> {product?.type}</li>
                             <li className="mt-2"><strong>Country:</strong> {product?.country}</li>
                             <li className="mt-2"><strong>City:</strong> {product?.city}</li>
                         </ul>
