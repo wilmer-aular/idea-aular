@@ -50,7 +50,7 @@ export function CartProvider({ children }) {
     };
 
     const getSubTotal = () => {
-        return listCart.length > 1 ? listCart.reduce((a, b) => a.total + b.total) : listCart[0].total;
+        return listCart.length > 1 ? listCart.map(i => i.total).reduce((a, b) => a + b) : listCart[0].total;
     }
 
     const getTotal = () => {

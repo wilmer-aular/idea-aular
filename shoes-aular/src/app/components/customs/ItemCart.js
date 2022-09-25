@@ -8,16 +8,16 @@ const ItemCart = ({ product, remove }) => {
             <div className="row v-align-children mt-4">
                 <div className="col-md-4">
                     <div className="wrapper">
-                        <div className="hover" style={{ backgroundImage: `url(${product?.imgUrl})`, paddingTop: "55%", backgroundPosition: "top center", backgroundSize: "100%", maxHeight: "100%" }}>
+                        <div className="hover" style={{ backgroundImage: `url(${product?.imageURL})`, paddingTop: "55%", backgroundPosition: "top center", backgroundSize: "100%", maxHeight: "100%" }}>
                         </div>
                     </div>
                 </div>
                 <div className="col-md-4">
                     <div>
                         <ul className="bulletPoints">
-                            <li className="mt-2"><strong>type:</strong> {product?.type}</li>
-                            <li className="mt-2"><strong>Country:</strong> {product?.country}</li>
-                            <li className="mt-2"><strong>City:</strong> {product?.city}</li>
+                            <li className="mt-2"><strong>brand:</strong> {product?.brand}</li>
+                            <li className="mt-2"><strong>Model:</strong> {product?.model}</li>
+                            <li className="mt-2"><strong>Origin:</strong> {product?.origin}</li>
                         </ul>
                     </div>
                     <div style={{ margin: "30px 30px 30px 30px" }}>

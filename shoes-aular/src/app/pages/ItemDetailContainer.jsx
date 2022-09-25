@@ -1,10 +1,11 @@
 import { DetailItem } from '@src/app/components/customs';
 import LoadingLottie from '@src/app/components/commons/loading/LoadingLottie';
-import { list } from "@src/utils/data"
-import { custonFetch } from "@src/services/custonFetch"
+import { conectorServices } from '@src/services/api-conector'
 import { useCallback, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useCartContent } from "../../context/CartContext";
+
+const serviceItems = conectorServices('Items');
 
 export const ItemDetailContainer = () => {
     const { addItem } = useCartContent();
@@ -15,9 +16,9 @@ export const ItemDetailContainer = () => {
 
     const promise = useCallback(async (id) => {
         setLoading(true);
-        const newData = await custonFetch(500, list.find(i => i.id === Number(id)));
+        const item = await serviceItems.getById(id);
+        setData(item)
         setLoading(false);
-        setData(newData)
     }, [setData])
 
 

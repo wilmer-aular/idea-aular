@@ -1,33 +1,23 @@
+import { useCallback, useEffect, useState } from 'react';
+import { conectorServices } from '@src/services/api-conector'
 import { ListItems } from '@src/app/components/customs';
 import LoadingLottie from '@src/app/components/commons/loading/LoadingLottie';
-import { list } from "@src/utils/data"
-import { custonFetch } from "@src/services/custonFetch"
-import { useCallback, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-const getType = (id) => {
-    return {
-        1: "House",
-        2: "Apartments",
-        3: "Office"
-    }[id];
-}
+const serviceItems = conectorServices('Items');
 
 export const ItemListContainer = (props) => {
     const { id } = useParams();
     const [loading, setLoading] = useState(true);
-    const [data, setData] = useState([]);
+    const [items, setItems] = useState([]);
 
     const promise = useCallback(async (id) => {
-        let newList = list;
-
-        if (id) newList = list.filter(i => i.type === getType(id))
-
+        const promise = id ? serviceItems.find('categoryId', Number(id)) : serviceItems.getAll()
         setLoading(true);
-        const newData = await custonFetch(500, newList);
+        const items = await promise;
+        setItems(items);
         setLoading(false);
-        setData(newData)
-    }, [setData]);
+    }, [setItems]);
 
 
     useEffect(() => {
@@ -39,7 +29,7 @@ export const ItemListContainer = (props) => {
             {
                 loading ? <LoadingLottie loading={loading} /> :
                     <div id='home' className="estimateNew">
-                        <ListItems list={data} />
+                        <ListItems list={items} />
                     </div>
             }
         </>
