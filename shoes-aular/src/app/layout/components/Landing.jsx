@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useCartContent } from "../../../context/CartContext";
+import { useCartContent } from "@src/contexts/CartContext";
 
 const Landing = () => {
     const { notify } = useCartContent();

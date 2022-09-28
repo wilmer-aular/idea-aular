@@ -2,7 +2,7 @@ import LoadingLottie from '@src/app/components/commons/loading/LoadingLottie';
 import { ItemCart, Financial } from '@src/app/components/customs';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useCartContent } from "../../context/CartContext";
+import { useCartContent } from "@src/contexts/CartContext";
 import { Button } from '../components/commons/Button';
 
 export const Cart = () => {

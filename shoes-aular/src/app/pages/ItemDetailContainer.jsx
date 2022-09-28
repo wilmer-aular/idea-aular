@@ -3,7 +3,7 @@ import LoadingLottie from '@src/app/components/commons/loading/LoadingLottie';
 import { conectorServices } from '@src/services/api-conector'
 import { useCallback, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { useCartContent } from "../../context/CartContext";
+import { useCartContent } from "@src/contexts/CartContext";
 
 const serviceItems = conectorServices('Items');
 

@@ -1,7 +1,9 @@
 import { useState, useEffect, useCallback } from "react"
 import { Button } from '../components/commons/Button';
-import { Input } from '../components/commons/Input'
-import { conectorServices } from '@src/services/api-conector'
+import { Input } from '../components/commons/Input';
+import { conectorServices } from '@src/services/api-conector';
+import { useNotifyContent } from "@src/contexts/NotifyProvider";
+
 const serviceCategories = conectorServices('Categories');
 const serviceItem = conectorServices('Items');
 
@@ -12,7 +14,7 @@ const object = {
     color: null,
     currency: "USD",
     description: null,
-    imageURl: null,
+    imageURL: null,
     model: null,
     origin: null,
     price: null,
@@ -21,6 +23,7 @@ const object = {
 }
 
 export const CreateNewProduct = () => {
+    const { handleNotify } = useNotifyContent();
     const [categories, setCategories] = useState([])
     const [item, setItem] = useState({ ...object })
 
@@ -37,7 +40,8 @@ export const CreateNewProduct = () => {
     }
     const createProduct = async () => {
         await serviceItem.create(item);
-        //setItem({ ...object });
+        handleNotify();
+        // handleNotify("Missing data in Items", "warn");
     }
 
 
@@ -145,13 +149,10 @@ export const CreateNewProduct = () => {
                                 />
                             </div>
                         </div>
-
-
-
                         <Input
-                            title="Image Url"
+                            title="Image URL"
                             value={item.imageURl}
-                            onChange={(e) => handleValue("imageURl", e.target)}
+                            onChange={(e) => handleValue("imageURL", e.target.value)}
                         />
                         <Button variant="primary" textButton="SAVE" click={() => createProduct()} />
                     </form>

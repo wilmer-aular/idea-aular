@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, getDocs, query, where, doc, getDoc } from 'firebase/firestore/lite';
+import { getFirestore, collection, getDocs, query, where, doc, getDoc, setDoc } from 'firebase/firestore/lite';
 import { config } from '@src/config'
 import { setError, setData } from '@src/utils/util.conector';
 const app = initializeApp(config.firebase);
@@ -34,7 +34,8 @@ export const conectorServices = (collectionName) => {
         },
         create: async (data) => {
             try {
-                // aqui va la logica de crear
+                await setDoc(doc(useCollection), data);
+                return { success: true }
             } catch (error) {
                 return setError(error)
             };

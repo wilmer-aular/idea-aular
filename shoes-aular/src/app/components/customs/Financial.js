@@ -1,5 +1,5 @@
 import { Button } from "../commons/Button";
-import { useCartContent } from "../../../context/CartContext";
+import { useCartContent } from "@src/contexts/CartContext";
 
 
 const Financial = () => {

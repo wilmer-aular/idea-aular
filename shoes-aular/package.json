@@ -7,6 +7,7 @@
     "@popperjs/core": "^2.11.6",
     "@src/app": "file:src/app",
     "@src/services": "file:src/services",
+    "@src/contexts": "file:src/contexts",
     "@src/utils": "file:src/utils",
     "@src/config": "file:src/config",
     "@testing-library/jest-dom": "^5.16.5",
@@ -17,6 +18,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-lottie": "^1.2.3",
+    "react-toastify": "^8.0.3",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"

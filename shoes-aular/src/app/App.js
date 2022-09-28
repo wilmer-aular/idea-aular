@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import { Layout } from "./layout/Layout";
 import { ItemListContainer, ItemDetailContainer, Error, Cart, CreateNewProduct } from "./pages";
-import { CartProvider } from "../context/CartContext";
+import { CartProvider } from "@src/contexts/CartContext";
 
 function App() {
 
