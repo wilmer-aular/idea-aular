@@ -1,4 +1,4 @@
-import { Button, ModalSave } from "../commons";
+import { Button } from "../commons";
 import { useCartContent } from "@src/contexts/CartContext";
 import { useState } from "react";
 
@@ -13,9 +13,6 @@ const Financial = () => {
 
     return (
         <>
-            <ModalSave {...props}>
-                <h1>hola bebe</h1>
-            </ModalSave>
             <div className="card">
                 <div className="card-header text-center">
                     <h3>ORDER SUMMARY</h3>
