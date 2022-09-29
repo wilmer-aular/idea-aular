@@ -3,7 +3,7 @@ import { ItemCart, Financial } from '@src/app/components/customs';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useCartContent } from "@src/contexts/CartContext";
-import { Button } from '../components/commons/Button';
+import { Button } from '../components/commons';
 
 export const Cart = () => {
     const [loading, setLoading] = useState(false);

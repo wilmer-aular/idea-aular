@@ -20,5 +20,3 @@ export const Input = ({ title, value, type, onChange, name }) => {
         </>
     )
 }
-
-export default Input;

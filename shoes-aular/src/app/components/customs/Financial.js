@@ -1,17 +1,21 @@
-import { Button } from "../commons/Button";
+import { Button, ModalSave } from "../commons";
 import { useCartContent } from "@src/contexts/CartContext";
+import { useState } from "react";
 
 
 const Financial = () => {
+    const [isShow, setIsShow] = useState(false)
     const { getTotal, setTaxes, setDiscount, taxes, discount, getSubTotal } = useCartContent();
+    const handleClose = () => setIsShow(false);
+    const checkoutNow = () => setIsShow(true);
 
-    const checkoutNow = () => {
-        alert("Are you sure to complete the purchase?");
-        //LA proxima clase se agrega esta funcionalidad;
-    }
+    const props = { isShow, handleClose, title: 'Checkout' };
 
     return (
         <>
+            <ModalSave {...props}>
+                <h1>hola bebe</h1>
+            </ModalSave>
             <div className="card">
                 <div className="card-header text-center">
                     <h3>ORDER SUMMARY</h3>

@@ -9,9 +9,6 @@ export const Button = ({
     variant = 'primary'
 }) => {
 
-    const event = () => {
-        click && click();
-    }
     return (
         <>
             <button
@@ -19,7 +16,10 @@ export const Button = ({
                 disabled={disabled}
                 type={type}
                 className={`btn btn-${variant} ${className}`}
-                onClick={() => event()}
+                onClick={(event) => {
+                    event.preventDefault();
+                    click();
+                }}
             >
                 {textButton}
             </button>
