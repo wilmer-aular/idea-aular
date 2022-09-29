@@ -1,4 +1,4 @@
-export const Input = ({ title, value, type, onChange, name }) => {
+export const Input = ({ title, value, type, onChange, error }) => {
 
     const handleValue = (e) => {
         onChange(e);
@@ -16,6 +16,12 @@ export const Input = ({ title, value, type, onChange, name }) => {
                     onChange={handleValue}
                     required
                 />
+                {
+                    error &&
+                    <span className="font-weight-bold font-size-sm my-1 text-danger">
+                        This field is required
+                    </span>
+                }
             </div>
         </>
     )

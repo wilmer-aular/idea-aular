@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, getDocs, query, where, doc, getDoc, setDoc } from 'firebase/firestore/lite';
+import { getFirestore, collection, getDocs, query, where, doc, getDoc, setDoc, serverTimestamp, updateDoc } from 'firebase/firestore/lite';
 import { config } from '@src/config'
 import { setError, setData } from '@src/utils/util.conector';
 const app = initializeApp(config.firebase);
@@ -34,6 +34,7 @@ export const conectorServices = (collectionName) => {
         },
         create: async (data) => {
             try {
+                data.date = serverTimestamp();
                 await setDoc(doc(useCollection), data);
                 return { success: true }
             } catch (error) {
@@ -42,7 +43,9 @@ export const conectorServices = (collectionName) => {
         },
         update: async (id, data) => {
             try {
-                //aqui va la logica de actualizar
+                const itemRef = doc(useCollection, id);
+                await updateDoc(itemRef, data);
+                return { success: true };
             } catch (error) {
                 return setError(error)
             };

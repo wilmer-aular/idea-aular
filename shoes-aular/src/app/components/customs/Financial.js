@@ -1,15 +1,43 @@
-import { Button } from "../commons";
+import { ModalCheckout } from "./modals/ModalCkeckout";
 import { useCartContent } from "@src/contexts/CartContext";
-import { useState } from "react";
+import { conectorServices } from '@src/services/api-conector';
+import { useNotifyContent } from "@src/contexts/NotifyProvider";
+import { increment } from 'firebase/firestore/lite';
+const serviceMappigns = conectorServices('Mappings');
+const serviceItems = conectorServices('Items');
 
+const mapItem = (item) => {
+    const { id, brand, price, qty, categoryName, model } = item
+    return {
+        id,
+        price,
+        quantity: qty,
+        title: `${categoryName} ${brand} ${model}`
+    };
+}
 
 const Financial = () => {
-    const [isShow, setIsShow] = useState(false)
-    const { getTotal, setTaxes, setDiscount, taxes, discount, getSubTotal } = useCartContent();
-    const handleClose = () => setIsShow(false);
-    const checkoutNow = () => setIsShow(true);
+    const { handleNotify } = useNotifyContent();
+    const { getTotal, setTaxes, setDiscount, taxes, discount, getSubTotal, listCart, clear } = useCartContent();
 
-    const props = { isShow, handleClose, title: 'Checkout' };
+    const handleCheckout = async (buyer) => {
+        const data = {
+            buyer,
+            items: listCart.map(mapItem),
+            total: getTotal(),
+        }
+        try {
+            await serviceMappigns.create(data);
+            listCart.map(async (i) => {
+                const data = { stock: increment(- i.qty) }
+                await serviceItems.update(i.id, data);
+            })
+            handleNotify();
+            clear();
+        } catch (error) {
+            handleNotify('Task Error', 'error')
+        }
+    }
 
     return (
         <>
@@ -40,7 +68,7 @@ const Financial = () => {
                 </div>
             </div>
             <div className="mt-2 text-center">
-                <Button variant="warning" textButton="CHECKOUT NOW" click={() => checkoutNow()} />
+                <ModalCheckout handleCheckout={handleCheckout} />
             </div>
         </>
     )

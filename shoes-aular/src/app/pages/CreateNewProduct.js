@@ -41,7 +41,6 @@ export const CreateNewProduct = () => {
     const createProduct = async () => {
         await serviceItem.create(item);
         handleNotify();
-        // handleNotify("Missing data in Items", "warn");
     }
 
 
