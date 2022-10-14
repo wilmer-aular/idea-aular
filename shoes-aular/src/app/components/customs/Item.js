@@ -20,9 +20,10 @@ const Item = ({ item }) => {
                     </>
                 </div>
                 <div >
-                    <h5 style={{ fontSize: 'inherit', cursor: "pointer" }}><strong>{item.description}</strong></h5>
-                    <h5 style={{ fontSize: '14px', cursor: "pointer" }}><strong>{item.brand}</strong> {item.model}.</h5>
-                    <span style={{ fontSize: 'inherit', cursor: "pointer" }}>$ {item.price}.</span>
+                    <h5 style={{ fontSize: '14px' }}><strong>{item.categoryName}</strong> {item.brand} {item.model}.</h5>
+                    <span style={{ fontSize: 'inherit' }}><strong>Price $</strong> {item.price}.</span>
+                    <strong> / </strong>
+                    <span style={{ fontSize: 'inherit' }}><strong>Stock </strong> {item.stock}.</span>
                 </div>
             </div>
         </>

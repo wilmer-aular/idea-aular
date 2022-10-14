@@ -1,12 +1,18 @@
 
 import Landing from './Landing'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
+import { Button } from "../../components/commons";
 import { useLocation } from 'react-router-dom';
 import { useEffect, useState, useCallback } from 'react';
-import { conectorServices } from '@src/services/api-conector'
+import { conectorServices } from '@src/services/api-conector';
+import { getOuth, removeOuth } from '@src/services/storage.service';
 const serviceCategories = conectorServices('Categories');
 
 const Navbar = () => {
+    const navegate = useNavigate();
+    let [queryParams] = useSearchParams();
+    const url = queryParams.get('url');
+    const outh = getOuth();
     const [categories, setCategories] = useState([])
     const { pathname } = useLocation();
     const getPreviousUrl = () => {
@@ -17,6 +23,11 @@ const Navbar = () => {
         const categories = await serviceCategories.getAll();
         setCategories(categories)
     }, [setCategories]);
+
+    const logout = () => {
+        removeOuth();
+        navegate('/login')
+    }
 
     useEffect(() => {
         if (pathname === '/' || pathname.includes('/category')) {
@@ -40,10 +51,13 @@ const Navbar = () => {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                        {
+                            pathname !== '/' &&
+                            <li key='home' className="nav-item">
+                                <Link className="nav-link active" aria-current="page" to='/#home'>Home</Link>
+                            </li>
+                        }
 
-                        <li key='home' className="nav-item">
-                            <Link className="nav-link active" aria-current="page" to='/#home'>Home</Link>
-                        </li>
 
                         {
                             (pathname === '/' || pathname.includes('/category')) &&
@@ -60,11 +74,36 @@ const Navbar = () => {
                                 </ul>
                             </li>
                         }
+                        {
+                            outh &&
+                            <li key='myShopping' className="nav-item">
+                                <Link className="nav-link active" aria-current="page" to={`/myShopping/${outh.id}`}>My shopping</Link>
+                            </li>
+                        }
 
                     </ul>
                     <form className="d-flex" role="search">
-                        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                        <button className="btn btn-outline-success" type="submit">Search</button>
+                        {
+                            outh ? (
+                                <>
+                                    <span style={{ marginTop: 7, marginRight: '10px' }}>
+                                        <span className="text-primary">Hi </span>
+                                        <span>{outh.user}</span>
+                                    </span>
+
+                                    {
+                                        outh.role === 'admin' &&
+                                        <Link to="/create_product" type="button" className="btn btn-primary">Create product </Link>
+                                    }
+                                    <Button variant="danger" textButton="Logout" style={{ marginLeft: 20 }} click={() => logout()} />
+                                </>
+                            )
+                                :
+                                (<>
+                                    <Link to={`/register${url ? '?url=cart' : ''}`} type="button" className="btn btn-success">Register</Link>
+                                    <Link to={`/login${url ? '?url=cart' : ''}`} type="button" className="btn btn-primary" style={{ marginLeft: 20 }}>Login</Link>
+                                </>)
+                        }
                     </form>
                 </div>
                 <Landing />

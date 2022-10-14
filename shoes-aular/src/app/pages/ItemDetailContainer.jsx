@@ -23,7 +23,7 @@ export const ItemDetailContainer = () => {
 
 
     const onAdd = (product, qty) => {
-        alert(`You have selected ${qty} ${product.type}`)
+        alert(`You have selected ${qty} ${product.brand} ${product.model}`)
         setQty(product.qty);
         addItem(product, qty)
     }

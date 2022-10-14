@@ -1,10 +1,9 @@
 import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, getDocs, query, where, doc, getDoc, setDoc, serverTimestamp, updateDoc } from 'firebase/firestore/lite';
+import { getFirestore, collection, getDocs, query, where, doc, getDoc, serverTimestamp, updateDoc, addDoc, deleteDoc } from 'firebase/firestore/lite';
 import { config } from '@src/config'
 import { setError, setData } from '@src/utils/util.conector';
 const app = initializeApp(config.firebase);
 const db = getFirestore(app);
-
 
 export const conectorServices = (collectionName) => {
     const useCollection = collection(db, collectionName);
@@ -35,8 +34,8 @@ export const conectorServices = (collectionName) => {
         create: async (data) => {
             try {
                 data.date = serverTimestamp();
-                await setDoc(doc(useCollection), data);
-                return { success: true }
+                const newData = await addDoc(useCollection, data);
+                return { success: true, id: newData.id }
             } catch (error) {
                 return setError(error)
             };
@@ -52,7 +51,9 @@ export const conectorServices = (collectionName) => {
         },
         detele: async (id) => {
             try {
-                //aqui va la logica de eliminar
+                const docRef = doc(db, collectionName, id)
+                await deleteDoc(docRef);
+                return { success: true };
             } catch (error) {
                 return setError(error)
             };

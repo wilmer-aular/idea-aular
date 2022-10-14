@@ -1,8 +1,7 @@
 import { Modal } from "react-bootstrap";
 import { Button } from '.'
 
-export const ModalSave = ({ isShow, handleClose, title, children, handleSave }) => {
-    console.log()
+export const ModalSave = ({ isShow, handleClose, title, children, handleSave, variant }) => {
     return (
         <>
             <Modal
@@ -10,16 +9,16 @@ export const ModalSave = ({ isShow, handleClose, title, children, handleSave }) 
                 onHide={handleClose}
                 scrollable={false}
             >
-                <Modal.Header closeButton style={{ backgroundColor: "#cdcbcb70" }}>
+                <Modal.Header closeButton className={`bg-${variant}`}>
                     <Modal.Title className="text-dark font-weight-bolder">
                         {title}
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>{children}</Modal.Body>
 
-                <Modal.Footer style={{ backgroundColor: "#cdcbcb70" }}>
-                    <Button variant="danger" click={handleClose} textButton="CLOSE" />
-                    <Button variant="success" click={handleSave} textButton="SAVE" />
+                <Modal.Footer className={`bg-${variant}`}>
+                    <Button variant="danger" click={handleClose} textButton="Close" />
+                    <Button variant="success" click={handleSave} textButton="Accept" />
                 </Modal.Footer>
 
             </Modal>

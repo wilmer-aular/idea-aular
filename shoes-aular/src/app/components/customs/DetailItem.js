@@ -1,14 +1,50 @@
+import { useNavigate } from 'react-router-dom';
 import { ItemCount } from './ItemCount'
+import { Button } from "../commons"
 import { Link } from 'react-router-dom';
+import { getOuth } from '@src/services/storage.service';
+import { useNotifyContent } from "@src/contexts/NotifyProvider";
+import { conectorServices } from '@src/services/api-conector';
+import { ModalCheckout } from "./modals/ModalCkeckout";
+import { useState } from 'react';
+
+const serviceItems = conectorServices('Items');
 
 const DetailItem = ({ item, onAdd, qty }) => {
+    const navegate = useNavigate();
+    const outh = getOuth();
+    const [isShow, setIsShow] = useState(false);
+    const { handleNotify } = useNotifyContent();
+
+    const handleClose = () => setIsShow(false)
+    const handleCheckout = async () => {
+        try {
+            await serviceItems.detele(item.id)
+            navegate(`/`);
+        } catch (err) {
+            console.error(err);
+            handleNotify("Task Error", "error");
+        }
+    }
+    const props = { handleClose, isShow, handleCheckout, message: 'Are you sure to remove this product?', variant: 'danger' }
     return (
         <>
+            <ModalCheckout {...props} />
             <section id="item" className="features features-2" >
                 <div className="container">
                     <div className="features features-10">
                         <div className="container">
-                            <h1 className="text-center" >Your ideal {item?.categoryName}</h1>
+                            <div className='text-center'>
+                                <h1>Your ideal {item?.categoryName}</h1>
+                                {
+                                    outh?.role === 'admin' &&
+                                    (<>
+                                        <Link to={`/create_product?id=${item.id}`} type="button" className="btn btn-outline-primary" >UPDATE PRODUCT</Link>
+                                        <Button variant="outline-danger" textButton="DELETE PRODUCT" style={{ marginLeft: '10px' }} click={() => setIsShow(true)} />
+                                    </>)
+                                }
+                            </div>
+
                             <div className="row v-align-children" style={{ marginTop: '50px' }}>
                                 <div className="col-md-6">
                                     <div className="wrapper">
@@ -23,7 +59,6 @@ const DetailItem = ({ item, onAdd, qty }) => {
                                         <li><strong>Model: </strong>{item?.model}</li>
                                         <li><strong>Origin: </strong> {item?.origin}</li>
                                         <li><strong>Color: </strong>{item?.color}</li>
-                                        <li><strong>Size: </strong>{item?.size}</li>
                                         <li><strong>Stock: </strong> {item?.stock} units</li>
                                     </ul>
                                     <div style={{ marginLeft: "24px" }}>

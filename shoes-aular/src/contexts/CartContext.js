@@ -1,7 +1,7 @@
-import React, { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
+import { toPercentage } from '@src/utils/util';
 
 const CartContext = createContext();
-
 export function useCartContent() {
     return useContext(CartContext);
 }
@@ -10,8 +10,6 @@ export const NotifyConsumer = CartContext.Consumer;
 
 export function CartProvider({ children }) {
     const [notify, setNotify] = useState(0);
-    const [discount, setDiscount] = useState(0)
-    const [taxes, setTaxes] = useState(0)
     const [listCart, setListCart] = useState([]);
 
     const addItem = (item, qty) => {
@@ -49,19 +47,29 @@ export function CartProvider({ children }) {
         }))
     };
 
+
+
     const getSubTotal = () => {
         return listCart.length > 1 ? listCart.map(i => i.total).reduce((a, b) => a + b) : listCart[0].total;
+    }
+    const getDiscount = () => {
+        let discount = listCart.length
+        if (listCart >= 20) discount = 20;
+        return toPercentage(getSubTotal(), discount);
+    }
+
+    const getTaxes = () => {
+        return toPercentage(getSubTotal(), 16);
     }
 
     const getTotal = () => {
         if (listCart.length) {
-            const total = getSubTotal();
-            return (Number(total) + Number(taxes)) - Number(discount);
+            return (Number(getSubTotal()) + Number(getTaxes())) - Number(getDiscount());
         }
         return 0;
     };
 
-    const value = { notify, setNotify, listCart, setListCart, clear, isInCart, removeItem, addItem, getTotal, discount, setDiscount, taxes, setTaxes, getSubTotal };
+    const value = { notify, setNotify, listCart, setListCart, clear, isInCart, removeItem, addItem, getTotal, getDiscount, getTaxes, getSubTotal };
     return (
         <CartContext.Provider value={value}>
             {children}
